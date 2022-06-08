@@ -1,0 +1,46 @@
+﻿<!--Using model-->
+@model IEnumerable<u05038015_HW03.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!--Heading-->
+<h2>Images</h2>
+<!--Sub-heading-->
+<h4>"~Media/Images/" folder</h4>
+
+<!--Container with light gray background-->
+<!--3 Images in a row-->
+<div class="container" style="background-color:lightgray;">
+    <div class="row">
+        <div class="column">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4" gallery>
+                    <a href="~/Media/Images/@item.FileName" data-fancybox="gallery" data-caption="@item.FileName">
+                        <img src="~/Media/Images/@item.FileName" style="width: 200px; height: 200px;" />
+                    </a>
+                    <p> @item.FileName</p>
+                    <br />
+                    <!--Bootstrap color button - Download-->
+                    <button type="button" class="btn btn-success">
+                        @Html.ActionLink("Download", "Download", new { name = item.FileName }, new { @Style = "color: black;" })
+                    </button>
+                    <!--Bootstrap color button - Delete-->
+                    <button type="button" class="btn btn-danger">
+                        @Html.ActionLink("Delete", "Delete", new { name = item.FileName }, new { @Style = "color: black;" })
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+<!--FancyBox-->
+<script>
+    $(document).ready(function () {
+        $(".gallery a").fancybox();
+    });
+</script>

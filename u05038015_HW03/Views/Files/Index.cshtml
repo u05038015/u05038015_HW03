@@ -1,0 +1,46 @@
+﻿<!--Using model-->
+@model IEnumerable<u05038015_HW03.Models.FileModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!--Heading-->
+<h2>Documents</h2>
+<!--Sub-heading-->
+<h4>"~Media/Documents/" folder</h4>
+
+<!--Table with files being uploaded-->
+<table class="table table-striped table-dark">
+    <thead>
+        <!--Table headers-->
+        <tr>
+            <th>File Name</th>
+            <th>Download</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Table body - Documents-->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </td>
+                <td>
+                    <!--Bootstrap color button - Download-->
+                    <button type="button" class="btn btn-success">
+                        @Html.ActionLink("Download", "Download", new { name = item.FileName }, new { @Style = "color: black;" })
+                    </button>
+                </td>
+                <td>
+                    <!--Bootstrap color button - Delete-->
+                    <button type="button" class="btn btn-danger">
+                        @Html.ActionLink("Delete", "Delete", new { name = item.FileName }, new { @Style = "color: black;" })
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

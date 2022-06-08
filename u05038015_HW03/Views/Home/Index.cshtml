@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!--Icon next to HOME-->
+<h2><i class="fa fa-home" aria-hidden="true"></i> Home</h2>
+
+<!--Sub-heading-->
+@ViewBag.Message
+
+<!--Container to group everything together for where the color change should happen-->
+<!--Background color change to light gray-->
+<div class="container" style="background-color: lightgray;">
+    <div class="row">
+        <div class="col-md-8">
+            <!--Description of what the program is doing-->
+            <h2><b><u>Description</u></b></h2>
+            <p>
+                <!--Icon next to What to do sub-heading-->
+                <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+                <i class="fa fa-info-circle" aria-hidden="true"></i> What to do:</a>
+                <br />
+                This program allows users to upload any of the three type of files:
+                <!--Unordered list-->
+                <ul>
+                    <!--List items-->
+                    <li>Documents</li>
+                    <li>Images</li>
+                    <li>Videos</li>
+                </ul>
+                Selecting a radio button will send the file being upload to that page and you can check it out by looking at the sub-heading after submit where the file is sent.
+                <br /> Any of the files that are uploaded can be deleted or downloaded.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <!--Option selection from the user for what type of file they want to save where-->
+            <h2>Option Selection:</h2>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <form>
+                    <!--RadioButtons-->
+                    <input type="radio" name="radioButtonInput" value="Document">Document<br />
+                    <input type="radio" name="radioButtonInput" value="Image">Image<br />
+                    <input type="radio" name="radioButtonInput" value="Video">Video<br />
+                    <br />
+                    <!--Browse files-->
+                    <input type="file" name="file" />
+                    <br />
+                    <!--Submit file-->
+                    <input type="submit" class="btn btn-default" value="Submit" />
+                </form>
+            }
+        </div>
+    </div>
+</div>
+
+
